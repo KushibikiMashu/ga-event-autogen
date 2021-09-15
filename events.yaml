@@ -12,3 +12,9 @@
   property:
     action: 'convert_error'
     category: 'convert'
+
+- name: NewEvent
+  property:
+    action: string
+    category: number
+    hasLabel: boolean

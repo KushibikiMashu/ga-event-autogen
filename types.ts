@@ -13,7 +13,13 @@ type ConvertError = {
     category: "convert";
 };
 
-export type Event = (ConvertStart | ConvertEnd | ConvertError) & {
+type NewEvent = {
+    action: string;
+    category: number;
+    hasLabel: boolean;
+};
+
+export type Event = (ConvertStart | ConvertEnd | ConvertError | NewEvent) & {
   label?: Record<string, string | number | boolean>;
   value?: string;
 };

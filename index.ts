@@ -12,12 +12,23 @@ type CreateTypeAlias = (name: TypeAlias['name'], property: TypeAlias['property']
 export const createTypeAlias: CreateTypeAlias = (name, property) => {
   const nodes = Object.entries(property).map((p: [string, string]) => {
     const [key, value] = p
+    let keyword = null
+
+    if (value === 'string') {
+      keyword = ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
+    } else if (value === 'number') {
+      keyword = ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword)
+    } else if (value === 'boolean') {
+      keyword = ts.factory.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword)
+    }
+
+    const type = keyword ?? ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(value))
 
     return ts.factory.createPropertySignature(
       undefined,
       ts.factory.createIdentifier(key),
       undefined,
-      ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(value))
+      type
     )
   })
 
@@ -50,7 +61,7 @@ export const createType = (aliases: TypeAlias[]): string => {
     .map(print)
     .join('\n\n')
 
-  const names = aliases.map(({ name }) => name)
+  const names = aliases.map(({name}) => name)
   const eventType = createEventType(names)
 
   return [types, eventType].join('\n\n')
