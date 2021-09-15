@@ -10,7 +10,7 @@ $ yarn convert
 ```
 
 ```yaml
-# events.yaml
+# input (events.yaml)
 - name: ConvertStart
   property:
     action: 'convert_start'
@@ -28,7 +28,7 @@ $ yarn convert
 ```
 
 ```ts
-// types.ts
+// output (types.ts)
 type ConvertStart = {
     action: "convert_start";
     category: "convert";
@@ -77,4 +77,4 @@ export const event = ({ action, category, label, value = '' }: Event) => {
 }
 ```
 
-I show the whole code on my blog -> [Next.jsでGoogle Analyticsを使えるようにする](https://panda-program.com/posts/nextjs-google-analytics).
+If you want to check the whole code, see my blog post -> [Next.jsでGoogle Analyticsを使えるようにする](https://panda-program.com/posts/nextjs-google-analytics).
