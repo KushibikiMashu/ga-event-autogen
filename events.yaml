@@ -1,0 +1,14 @@
+- name: ConvertStart
+  property:
+    action: 'convert_start'
+    category: 'convert'
+
+- name: ConvertEnd
+  property:
+    action: 'convert_end'
+    category: 'convert'
+
+- name: ConvertError
+  property:
+    action: 'convert_error'
+    category: 'convert'
