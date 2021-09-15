@@ -42,7 +42,7 @@ export const createEventType = (names: string[]): string => {
   return `export type Event = (${names.join(' | ')}) & {
   label?: Record<string, string | number | boolean>;
   value?: string;
-}`
+};`
 }
 
 export const createType = (aliases: TypeAlias[]): string => {

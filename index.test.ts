@@ -102,7 +102,7 @@ describe('createEventType', () => {
     const expected = `export type Event = (ConvertStart | ConvertEnd) & {
   label?: Record<string, string | number | boolean>;
   value?: string;
-}`
+};`
 
     expect(actual).toBe(expected)
   })
@@ -140,7 +140,7 @@ type ConvertEnd = {
 export type Event = (ConvertStart | ConvertEnd) & {
   label?: Record<string, string | number | boolean>;
   value?: string;
-}`
+};`
 
     expect(actual).toBe(expected)
   })

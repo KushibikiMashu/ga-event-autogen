@@ -16,4 +16,4 @@ type ConvertError = {
 export type Event = (ConvertStart | ConvertEnd | ConvertError) & {
   label?: Record<string, string | number | boolean>;
   value?: string;
-}
+};
